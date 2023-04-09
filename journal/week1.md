@@ -10,7 +10,7 @@ Then for health check, I added a health check endpoint in the backend api. I had
 I researched a few practices for Container Security and Dockerfile out of which I switched out from building and running the docker image and container for the backend api Dockerfile as **root** user to **appuser**> I also set the file system access to ***read only*** for the frontend service of the docker compose.
 
 
-
+As for learning and playing around with docker in a local environment as well as on an EC2 instance, I've already had enough hands on experience doing that. So I don't think I need to get on with that anymore for this week.
 
 
 NOTES:
