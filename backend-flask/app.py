@@ -13,6 +13,7 @@ from services.message_groups import *
 from services.messages import *
 from services.create_message import *
 from services.show_activity import *
+from services.health_check import *
 
 app = Flask(__name__)
 frontend = os.getenv('FRONTEND_URL')
@@ -64,6 +65,11 @@ def data_create_message():
 @app.route("/api/activities/home", methods=['GET'])
 def data_home():
   data = HomeActivities.run()
+  return data, 200
+
+@app.route("/api/health", methods=['GET'])
+def health_check():
+  data = HealthCheck.run()
   return data, 200
 
 @app.route("/api/activities/notifications", methods=['GET'])

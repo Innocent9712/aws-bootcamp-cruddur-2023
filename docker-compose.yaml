@@ -9,10 +9,17 @@ services:
       - "4567:4567"
     volumes:
       - ./backend-flask:/backend-flask
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}/api/health"]
+      # test: ["CMD", "curl", "-f", "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
   frontend-react-js:
     environment:
       REACT_APP_BACKEND_URL: "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
     build: ./frontend-react-js
+    read_only: true
     ports:
       - "3000:3000"
     volumes:

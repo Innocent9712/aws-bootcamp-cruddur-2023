@@ -32,6 +32,9 @@ ENV PATH=/home/appuser/.local/bin:$PATH
 ENV FLASK_ENV=development
 WORKDIR /backend-flask
 
+RUN apt-get update && apt-get install -y wget netcat
+
+
 
 COPY --from=build /root/.local /usr/local
 
